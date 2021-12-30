@@ -1,38 +1,250 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@400;500;700&display=swap');
+
+:root {
+  /* text */
+  --font-family: 'Spartan', sans-serif;
+  --white: hsl(0, 0%, 100%);
+  --font-size-numbers: 2rem;
+
+  /* THEME 1 */
+  /* backgrounds */
+  --theme1-main-background: hsl(222, 26%, 31%);
+  --theme1-toggle-keyboard-background: hsl(223, 31%, 20%);
+  --theme1-screen-background: hsl(224, 36%, 15%);
+  /* keys */
+  --theme1-keypad-background: hsl(225, 21%, 49%);
+  --theme1-keypad-shadow: hsl(224, 28%, 35%);
+  --theme1-key-equal-toggle: hsl(6, 63%, 50%);
+  --theme1-key-equal-shadow: hsl(6, 70%, 34%);
+  --theme1-key-background: hsl(30, 25%, 89%);
+  --theme1-key-shadow: hsl(28, 16%, 65%);
+  /* text */
+  --theme1-text: hsl(221, 14%, 31%);
+  --theme1-text-2: hsl(0, 0%, 100%);
+
+
+  /* THEME 2 */
+  /* backgrounds */
+  --theme2-main-background: hsl(0, 0%, 90%);
+  --theme2-toggle-keyboard-background: hsl(0, 5%, 81%);
+  --theme2-screen-background: hsl(0, 0%, 93%);
+  /* keys */
+  --theme2-keypad-background: hsl(185, 42%, 37%);
+  --theme2-keypad-shadow: hsl(185, 58%, 25%);
+  --theme2-key-equal-toggle: hsl(25, 98%, 40%);
+  --theme2-key-equal-shadow: hsl(25, 99%, 27%);
+  --theme2-key-background: hsl(45, 7%, 89%);
+  --theme2-key-shadow: hsl(35, 11%, 61%);
+  /* text */
+  --theme2-text: hsl(60, 10%, 19%);
+  --theme2-text-2: hsl(60, 10%, 19%);
+
+
+
+  /* THEME 3 */
+  /* backgrounds */
+  --theme3-main-background: hsl(268, 75%, 9%);
+  --theme3-toggle-keyboard-background: hsl(268, 71%, 12%);
+  --theme3-screen-background: hsl(268, 71%, 12%);
+  /* keys */
+  --theme3-keypad-background: hsl(268, 71%, 12%);
+  --theme3-keypad-shadow: hsl(285, 91%, 52%);
+  --theme3-key-equal-toggle: hsl(176, 100%, 44%);
+  --theme3-key-equal-shadow: hsl(177, 92%, 70%);
+  --theme3-key-background: hsl(268, 47%, 21%);
+  --theme3-key-shadow: hsl(290, 70%, 36%);
+  /* text */
+  --theme3-text: hsl(52, 100%, 62%);
+  --theme3-text-2: hsl(52, 100%, 62%);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  font-weight: 700;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h1, h2, h3, h4, p {
+  margin-bottom: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#root {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 25rem;
+  height: 70vh;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.nav__appname {
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+.nav__menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem;
+}
+
+.nav__themes-names p,
+.nav__theme {
+  color: inherit;
+  font-weight: 600;
+  font-size: 0.7rem;
+}
+
+.nav__themes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.nav__themes-names {
+  display: flex;
+  justify-content: space-around;
+  gap: 0.8rem;
+}
+
+.nav__themes-toggle {
+  height: 1.1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
+  padding: 0.3rem;
+  cursor: pointer;
+}
+
+.nav__themes-toggle_switch {
+  height: 0.7rem;
+  width: 0.7rem;
+  border-radius: 50%;
+  background: white;
+}
+
+.answer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 5% 4%;
+  border-radius: 0.5rem;
+}
+
+.answer__text {
+  font-size: var(--font-size-numbers);
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: repeat(4, calc(calc(100% - 3rem) / 4));
+  grid-template-rows: repeat(5, 3rem);
+  gap: 1rem;
+  padding: 5%;
+  border-radius: 0.5rem;
+}
+
+.controls__item {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  border-radius: 0.5rem;
+  cursor: pointer;
+
 }
 
-.App-link {
-  color: #61dafb;
+.controls__item p {
+  font-size: 1.2rem;
+  height: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.controls__item.reset {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  font-size: 0.8rem;
+}
+
+.controls__item.delete p,
+.controls__item.equals p,
+.controls__item.reset p {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.controls__item.equals {
+  grid-column-start: 3;
+  grid-column-end: 5;
+}
+
+@media screen and (max-width: 32rem) {
+  .container {
+    height: 100vh;
+    padding: 7% 5%;
+    gap: 2rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .controls {
+    flex: auto;
+    grid-template-columns: repeat(4, calc(calc(100% - 3.6rem) / 4));
+    grid-template-rows: repeat(5, auto);
+    grid-gap: 1.2rem;
+    gap: 1.2rem;
   }
+
+
+
+  .controls__item p {
+    font-size: 2rem;
+    /* height: 1.5rem; */
+    height: 2rem;
+  }
+
+  .controls__item.delete p,
+  .controls__item.equals p,
+  .controls__item.reset p {
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    height: 1rem;
+  }
+
+  .nav__appname {
+    font-weight: 700;
+    font-size: 2.2rem;
+  }
+
+  .nav__themes-names p,
+  .nav__theme {
+    color: inherit;
+    font-weight: 600;
+    font-size: .8rem;
+  }
+
+  .nav__themes-toggle {
+    height: 1.5rem;
+    border-radius: 0.7rem;
+    padding: 0.5rem;
+  }
+
+  .nav__themes-toggle_switch {
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    background: white;
+  }
+
 }
