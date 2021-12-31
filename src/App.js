@@ -6,8 +6,6 @@ let mode = localStorage.getItem('theme');
 function App() {
   const [theme, setTheme, getTheme] = useContext(ThemeContext)
   const [theme_index, setTheme_index] = useState(mode === 'dark' ? 0 : mode === 'light' ? 1 : 2);
-  const [answer, setAnswer] = useState(0);
-  const [operator, setOperator] = useState('');
   const [operation, setOperation] = useState('');
   let formulaList = [];
 
@@ -73,6 +71,14 @@ function App() {
     const validate = validFormula(operation);
     if (validate) {
       let results = calculateResult();
+      //check decimal places
+      let temp = results.toString();
+      if (temp.indexOf('.') >= 0) {
+        let decimals = temp.length - temp.indexOf('.') - 1;
+        if (decimals > 4) {
+          results = results.toFixed(4)
+        }
+      }
       setOperation(results + '')
     } else {
       reset();

@@ -144,10 +144,13 @@ h1, h2, h3, h4, p {
   justify-content: flex-end;
   padding: 5% 4%;
   border-radius: 0.5rem;
+  overflow: hidden;
 }
 
 .answer__text {
   font-size: var(--font-size-numbers);
+  width: 100%;
+  text-align: end;
 }
 
 .controls {
